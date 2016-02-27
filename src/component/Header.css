@@ -1,0 +1,12 @@
+/**
+ * @providesModule Header
+ * @permanent
+ */
+
+.Header/root {
+  position: relative;
+}
+
+.Header/headerContainer {
+  background-color: red;
+}

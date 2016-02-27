@@ -1,0 +1,12 @@
+/**
+ * @providesModule Content
+ * @permanent
+ */
+
+.Content/root {
+  position: relative;
+}
+
+.Content/headerContainer {
+  background-color: blue;
+}
