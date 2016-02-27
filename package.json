@@ -1,9 +1,9 @@
 {
-  "name": "my-repository",
-  "description": "Another public repository.",
+  "name": "react-boilerplate",
+  "description": "A boilerplate for react based applications",
   "version": "0.1.0",
-  "repository": "iiegor/my-repository",
-  "license": "BSD-3-Clause",
+  "repository": "iiegor/react-boilerplate",
+  "license": "MIT",
   "scripts": {
     "pretest": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
     "start": "cross-env NODE_ENV=development gulp serve",
