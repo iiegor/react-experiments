@@ -5,6 +5,7 @@ var del = require('del');
 var concatCSS = require('gulp-concat-css');
 var derequire = require('gulp-derequire');
 var flatten = require('gulp-flatten');
+var assign = require('object-assign');
 var gulp = require('gulp');
 var gulpUtil = require('gulp-util');
 var runSequence = require('run-sequence');
@@ -13,7 +14,8 @@ var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 var webpackDevServer = require('webpack-dev-server');
 
-var babelOpts = require('./scripts/babel/default-options');
+var babelDefaultOpts = require('./scripts/babel/default-options');
+var babelCxTransform = require('./scripts/babel/cx-replacement');
 var babelPluginDEV = require('fbjs-scripts/babel/dev-expression');
 var gulpCheckDependencies = require('fbjs-scripts/gulp/check-dependencies');
 
@@ -29,6 +31,14 @@ var paths = {
     'src/**/*.css',
   ],
 };
+
+/*
+var babelOpts = assign({}, babelDefaultOpts, {
+  plugins: babelDefaultOpts.plugins.concat([
+    babelCxTransform
+  ]),
+});
+*/
 
 // Ensure that we use another plugin that isn't specified in the default Babel
 // options, converting __DEV__.

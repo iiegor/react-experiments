@@ -1,6 +1,5 @@
 var assign = require('object-assign');
 var babelPluginModules = require('fbjs-scripts/babel/rewrite-modules');
-var cxReplacement = require('./cx-replacement');
 
 module.exports = {
   blacklist: [
@@ -12,7 +11,7 @@ module.exports = {
     'es7.classProperties',
   ],
   stage: 1,
-  plugins: [babelPluginModules, /*cxReplacement*/],
+  plugins: [babelPluginModules],
   _moduleMap: assign({}, require('fbjs/module-map'), {
     React: 'react',
     ReactDOM: 'react-dom',
