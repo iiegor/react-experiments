@@ -7,7 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-var selectorMap = null;
+var selectorMap = {};
 
 function replaceSlashes(str) {
   var selector = selectorMap[str] || str;
