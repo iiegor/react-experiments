@@ -32,13 +32,11 @@ var paths = {
   ],
 };
 
-/*
 var babelOpts = assign({}, babelDefaultOpts, {
   plugins: babelDefaultOpts.plugins.concat([
-    babelCxTransform
+    //babelCxTransform
   ]),
 });
-*/
 
 // Ensure that we use another plugin that isn't specified in the default Babel
 // options, converting __DEV__.
@@ -55,6 +53,11 @@ var buildDist = function(opts) {
       filename: opts.output,
     },
     plugins: [
+      new webpackStream.webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(
+          opts.debug ? 'development' : 'production'
+        ),
+      }),
       new webpackStream.webpack.optimize.OccurenceOrderPlugin(),
       new webpackStream.webpack.optimize.DedupePlugin(),
     ],
