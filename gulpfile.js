@@ -13,6 +13,7 @@ var through = require('through2');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 var webpackDevServer = require('webpack-dev-server');
+var loaderUtils = require('loader-utils');
 
 var babelDefaultOpts = require('./scripts/babel/default-options');
 var babelCxTransform = require('./scripts/babel/cx-replacement');
@@ -115,7 +116,7 @@ gulp.task('css', function() {
             var selector = cls.replace(/\//g, '-');
 
             if (process.env.NODE_ENV !== 'development') {
-              var selectorHash = '_' + require('shorthash').unique(selector);
+              var selectorHash = '_' + loaderUtils.getHashDigest(selector, '', 'base64', 5);
 
               selectorMap[cls.replace('.', '')] = selectorHash;
 
