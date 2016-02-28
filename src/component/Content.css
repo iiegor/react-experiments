@@ -7,6 +7,6 @@
   position: relative;
 }
 
-.Content/headerContainer {
-  background-color: blue;
+.Content/contentContainer {
+  text-align: center;
 }

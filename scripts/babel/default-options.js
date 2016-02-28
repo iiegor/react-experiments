@@ -12,7 +12,7 @@ module.exports = {
     'es7.classProperties',
   ],
   stage: 1,
-  plugins: [babelPluginModules, cxReplacement],
+  plugins: [babelPluginModules, /*cxReplacement*/],
   _moduleMap: assign({}, require('fbjs/module-map'), {
     React: 'react',
     ReactDOM: 'react-dom',

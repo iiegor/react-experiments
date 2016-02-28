@@ -1,0 +1,28 @@
+/**
+ * @providesModule Button
+ * @permanent
+ */
+
+.Button/root {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.Button/alignInline {
+  display: inline-block;
+}
+
+.Button/buttonContainer {
+  border-radius: 4px;
+  color: #fafafa;
+  background-color: #cc7a6f;
+  padding: 10px 16px;
+  margin: 0 5px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.Button/buttonContainer:active {
+  background: #c5695c;
+}

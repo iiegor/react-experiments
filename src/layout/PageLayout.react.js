@@ -10,8 +10,8 @@ class PageLayout extends React.Component {
 
   render() {
     return (
-      <div className={cx('PageLayout/layoutContainer')}>
-        {this.props.children}
+      <div className={cx('PageLayout/root')}>
+        <div className={cx('PageLayout/layoutContainer')}>{this.props.children}</div>
       </div>
     );
   }

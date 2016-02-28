@@ -14,7 +14,9 @@ class Content extends React.Component {
   render() {
     return (
       <div className={cx('Content/root')}>
-        <div className={cx('Content/headerContainer')}>{this.props.children}</div>
+        <div className={cx('Content/contentContainer')}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

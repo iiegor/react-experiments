@@ -2,7 +2,20 @@
  * @providesModule PageLayout
  */
 
+.PageLayout/root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+}
+
 .PageLayout/layoutContainer {
-  margin: 0 auto;
-  max-width: 1600px;
+  display: block;
+  background-color: #FFF;
+  border-radius: 3px;
+  width: 50%;
+  max-width: 425px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.06),0 2px 5px 0 rgba(0,0,0,.2);
 }
