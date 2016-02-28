@@ -7,14 +7,22 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+function replaceSlashes(str) {
+  return str.replace(/\//, '-');
+}
+
 function nodeToLiteral(node) {
   var args = node.arguments.slice();
   var arg = args[0];
 
+  arg.raw = "'" + replaceSlashes(arg.rawValue) + "'";
+  arg.value = replaceSlashes(arg.value);
+  arg.rawValue = replaceSlashes(arg.rawValue);
+
   for (var i = 1; i < args.length; i++) {
-    arg.raw =  "'" + arg.rawValue + " " + args[i].value + "'";
-    arg.value += ' ' + args[i].value;
-    arg.rawValue += ' ' + args[i].rawValue;
+    arg.raw =  "'" + arg.rawValue + " " + replaceSlashes(args[i].value) + "'";
+    arg.value += ' ' + replaceSlashes(args[i].value);
+    arg.rawValue += ' ' + replaceSlashes(args[i].rawValue);
   }
 
   return arg;
