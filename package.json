@@ -1,8 +1,7 @@
 {
-  "name": "react-boilerplate",
-  "description": "A boilerplate for react based applications",
+  "name": "react-experiments",
   "version": "0.1.0",
-  "repository": "iiegor/react-boilerplate",
+  "repository": "iiegor/react-experiments",
   "license": "MIT",
   "scripts": {
     "pretest": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
