@@ -7,8 +7,12 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+var selectorMap = null;
+
 function replaceSlashes(str) {
-  return str.replace(/\//, '-');
+  var selector = selectorMap[str] || str;
+
+  return selector.replace(/\//, '-');
 }
 
 function nodeToLiteral(node) {
@@ -28,7 +32,11 @@ function nodeToLiteral(node) {
   return arg;
 }
 
-module.exports = function(babel) {
+exports.setSelectorMap = function(cssSelectorMap) {
+  selectorMap = cssSelectorMap;
+}
+
+exports.transformer = function(babel) {
   var t = babel.types;
 
   /**

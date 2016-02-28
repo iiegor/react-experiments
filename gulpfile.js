@@ -32,9 +32,11 @@ var paths = {
   ],
 };
 
+var selectorMap = {};
+
 var babelOpts = assign({}, babelDefaultOpts, {
   plugins: babelDefaultOpts.plugins.concat([
-    //babelCxTransform
+    babelCxTransform.transformer
   ]),
 });
 
@@ -89,6 +91,9 @@ gulp.task('clean', function() {
 });
 
 gulp.task('modules', function() {
+  // Pass css selectors map to the transform
+  babelCxTransform.setSelectorMap(selectorMap);
+
   return gulp
     .src(paths.src)
     .pipe(babel(babelOpts))
@@ -107,7 +112,17 @@ gulp.task('css', function() {
         /\/\*.*?\*\/|'(?:\\.|[^'])*'|"(?:\\.|[^"])*"|url\([^)]*\)|(\.(?:public\/)?[\w-]*\/{1,2}[\w-]+)/g,
         function(match, cls) {
           if (cls) {
-            return cls.replace(/\//g, '-');
+            var selector = cls.replace(/\//g, '-');
+
+            if (process.env.NODE_ENV !== 'development') {
+              var selectorHash = '_' + require('shorthash').unique(selector);
+
+              selectorMap[cls.replace('.', '')] = selectorHash;
+
+              selector = '.' + selectorHash;
+            }
+
+            return selector;
           } else {
             return match;
           }
@@ -135,7 +150,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('dist', ['modules', 'css'], function() {
+gulp.task('dist', ['css', 'modules'], function() {
   var opts = {
     debug: true,
     output: 'App.js',

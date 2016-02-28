@@ -26,10 +26,7 @@ class Button extends React.Component<DefaultProps> {
   }
 
   render() {
-    const rootClass = cx({
-      'Button/root': true,
-      'Button/alignInline': this.props.inline
-    });
+    const rootClass = cx('Button/root', 'Button/alignInline');
 
     return (
       <div className={rootClass} onClick={this.props.onClick}>
